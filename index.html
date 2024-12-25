@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <!-- InstanceBegin template="/Templates/c12345_web.dwt" codeOutsideHTMLIsLocked="false" -->
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="author" content="SamStudio">
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>在线数值列表求和工具_程园丁</title>
+    <!-- InstanceEndEditable -->
+    <link href="../common/bootstrap.css" rel="stylesheet">
+    <link href="../common/docs.min.css" rel="stylesheet">
+    <link href="../common/base.css%3Fv=20201025.css" rel="stylesheet">
+    <script src="../common/jquery-3.4.1.min.js"></script>
+    <script src="../common/bootstrap.bundle.js"></script>
+    <script src="../common/masonry.pkgd.min.js"></script>
+    <script src="../common/base.js"></script>
+    <!-- InstanceBeginEditable name="head" -->
+    <script src="common/jspreadsheet/jexcel.js"></script>
+    <script src="common/jspreadsheet/jsuites.js"></script>
+    <link href="common/jspreadsheet/jexcel.css" rel="stylesheet">
+    <link href="common/jspreadsheet/jsuites.css" rel="stylesheet">
+    <!-- InstanceEndEditable -->
+  </head>
+  <body><a class="navbar-brand mr-2" href="http://web.c12345.com/" aria-label="程园丁"></a><br>
+    <div style="text-align: center;">
+      <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+        <div class="content-text">
+          <div style="display:inline-block;padding:32px;border-radius:16px;background-color:#fff;">
+            <table id="spreadsheet">
+              <thead>
+                <tr>
+                  <td id="num">一行一个数据</td>
+                </tr>
+              </thead>
+              <tbody>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+	</tbody>
+              <tfoot>
+                <tr>
+                  <td>=SUMCOL(TABLE(), 0)</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <br>
+          <script>
+var SUMCOL = function(instance, columnId) {
+	var total = 0;
+	for (var j = 0; j < instance.options.data.length; j++) {
+		var d=instance.records[j][columnId].innerHTML
+		d=d.replace(/,/g,'')
+		d=Number(d)
+		if(d){
+			total += d;
+		}
+	}
+	total='求和：'+total
+	return total
+}
+jspreadsheet(document.getElementById('spreadsheet'),{});
+</script> </div>
+        <!-- InstanceEndEditable -->
+        <footer class="mt-5">
+          <div class="fnav">
+            <script>doc.nav()</script> </div>
+          <script src="../common/stat.js"></script> </footer>
+      </header>
+    </div>
+  </body>
+  <!-- InstanceEnd -->
+</html>
